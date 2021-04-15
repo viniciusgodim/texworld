@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-b25c81bb4624224df237.js"
+    "url": "webpack-runtime-d5a3c32295218836cb4a.js"
   },
   {
-    "url": "styles.8ac0a08010ac3beafdc8.css"
+    "url": "styles.ed25a4614ffc455e6819.css"
   },
   {
     "url": "styles-407fe62976dc5310c43e.js"
@@ -39,11 +39,11 @@ self.__precacheManifest = [
     "url": "framework-8e528b732ab2eaadb7b7.js"
   },
   {
-    "url": "app-a7cbd5f425aff115df4a.js"
+    "url": "app-a448fbfda849684b1958.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "06613f3caaf8e68a489058c95a539295"
+    "revision": "cb8e2f0ebfeeb802581b160d74519889"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-b0556ce5127c1a3e2490.js"
@@ -54,14 +54,14 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "565d2e2b00e8a4c4d7fb993a022180f6"
+    "revision": "ed3c751f8434ef225e1eca8d39b1715e"
   },
   {
     "url": "polyfill-c38cd845a4181427323c.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "6c0807859d161d938f737ba622add416"
+    "revision": "451549aae4b5259e1aff6c0f0ddfd359"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -148,12 +148,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/leonids`), ``)
+  pathname = pathname.replace(new RegExp(`^/texworld`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/leonids/app-a7cbd5f425aff115df4a.js`))) {
+  if (!resources || !(await caches.match(`/texworld/app-a448fbfda849684b1958.js`))) {
     return await fetch(event.request)
   }
 
@@ -166,7 +166,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/leonids/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/texworld/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
